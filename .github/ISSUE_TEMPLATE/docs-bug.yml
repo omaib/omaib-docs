@@ -1,0 +1,55 @@
+name: Documentation Bug
+description: Report incorrect, outdated, or broken documentation
+title: "[Docs Bug] "
+labels: ["type: bug", "type: documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve OMAIB documentation.
+        Please provide as much detail as possible so we can locate and fix the issue.
+
+  - type: input
+    id: page_url
+    attributes:
+      label: Page URL
+      description: The full URL of the affected documentation page
+      placeholder: https://omaib.github.io/omaib-docs/onboarding/04-VALIDATION/
+    validations:
+      required: true
+
+  - type: input
+    id: section
+    attributes:
+      label: Section or heading
+      description: The heading or section of the page where the issue occurs
+      placeholder: "Step 3 — Run the validator"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What is wrong?
+      description: Describe the error, outdated information, or broken element
+      placeholder: |
+        The command shown is `omaib-validate`, but the correct CLI name is
+        `omaib-validate-adapter` as of v0.3.0.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should it say?
+      description: If you know the correct information, please provide it
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true

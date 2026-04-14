@@ -1,0 +1,62 @@
+name: Documentation Request
+description: Suggest new documentation, a guide, or an improvement to existing content
+title: "[Docs Request] "
+labels: ["type: enhancement", "type: documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a topic that needs documenting, or an existing page that could be improved?
+        Let us know — all contributions and suggestions are welcome.
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Request type
+      options:
+        - New page or guide
+        - Expand existing page
+        - Add code examples
+        - Improve clarity or structure
+        - Add diagrams or visuals
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: related_page
+    attributes:
+      label: Related page (if any)
+      description: URL or path of the existing page this relates to
+      placeholder: https://omaib.github.io/omaib-docs/onboarding/02-CREATE-ADAPTER/
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the content you would like to see
+      placeholder: |
+        It would be helpful to have a step-by-step guide for setting up the
+        GitHub App for failure notifications, including screenshots.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Why is this needed?
+      description: Explain the use case or pain point this would address
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I am willing to submit a PR for this change
+          required: false
