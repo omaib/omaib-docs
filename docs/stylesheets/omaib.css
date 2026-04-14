@@ -79,6 +79,21 @@
   font-weight: 600;
 }
 
+/* ── Sidebar navigation ─────────────────────────────────────────────────── */
+.md-nav__link--active,
+.md-nav__link:is([data-md-state="active"]) {
+  color: var(--omaib-slate-900);
+  font-weight: 600;
+}
+
+.md-nav__link:hover {
+  color: var(--omaib-slate-800);
+}
+
+.md-nav__link {
+  color: var(--omaib-slate-600);
+}
+
 /* ── Footer ─────────────────────────────────────────────────────────────── */
 .md-footer {
   background-color: var(--omaib-slate-900);

@@ -73,10 +73,10 @@ plugins:
       fallback_to_build_date: true
       enable_git_follow: false
       strict: false
-  - git-committers:
-      repository: omaib/omaib-docs
-      branch: main
-      enabled: !ENV [CI, false]
+  # - git-committers:
+  #     repository: omaib/omaib-docs
+  #     branch: main
+  #     enabled: !ENV [CI, false]
 
 nav:
   - Home: index.md
