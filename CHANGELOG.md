@@ -1,3 +1,11 @@
+# Version  v0.1.0
+
+
+#### Other Changes
+
+* [#1](https://github.com/omaib/omaib-docs/pull/1): feat: OMAIB Documentation Site — MkDocs Material with CI & Release Automation
+
+
 # Changelog
 
 All notable changes to `omaib-docs` are documented here.
