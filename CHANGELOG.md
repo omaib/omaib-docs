@@ -1,3 +1,11 @@
+# Version  v0.1.0
+
+
+#### Other Changes
+
+* [#1](https://github.com/omaib/omaib-docs/pull/1): feat: OMAIB Documentation Site — MkDocs Material with CI & Release Automation
+
+
 # Changelog
 
 All notable changes to `omaib-docs` are documented here.
@@ -5,7 +13,7 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [SemVer](ht
 
 ## [Unreleased]
 
-## [0.1.0] — 2026-06-22
+## [0.1.0] — 2026-04-14
 
 ### Added
 
