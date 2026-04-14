@@ -1,26 +1,27 @@
 # 05 — Setting Up Continuous Validation with GitHub Actions
 
-> **Audience**: Principal Investigators
-> **Time to complete**: 10 minutes
-> **Prerequisites**: Gate 1 passing locally (see [04 — Local Validation and Gate Scores](04-VALIDATION.md))
-> **Next step**: [06 — Registering Your Adapter with OMAIB](06-REGISTER.md)
+> **Audience**: Principal Investigators **Time to complete**: 10 minutes **Prerequisites**: Gate 1 passing locally (see
+> [04 — Local Validation and Gate Scores](04-VALIDATION.md)) **Next step**:
+> [06 — Registering Your Adapter with OMAIB](06-REGISTER.md)
 
 ---
 
 ## What This Document Covers
 
-Once your adapter passes Gate 1 locally, you set up a GitHub Actions workflow so that OMAIB validation runs **automatically** on every push and pull request to your repository. This protects you from accidentally committing invalid adapter files and gives OMAIB a continuous signals channel for your benchmark's health.
+Once your adapter passes Gate 1 locally, you set up a GitHub Actions workflow so that OMAIB validation runs
+**automatically** on every push and pull request to your repository. This protects you from accidentally committing
+invalid adapter files and gives OMAIB a continuous signals channel for your benchmark's health.
 
 ---
 
 ## Why CI Validation Matters
 
-| Benefit | Detail |
-|---|---|
-| Prevents regressions | A schema break in your adapter files fails the workflow before it merges |
-| Visible to OMAIB | The platform monitors your workflow badge; a persistent failure pauses leaderboard ingestion |
+| Benefit                | Detail                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------- |
+| Prevents regressions   | A schema break in your adapter files fails the workflow before it merges                          |
+| Visible to OMAIB       | The platform monitors your workflow badge; a persistent failure pauses leaderboard ingestion      |
 | Pre-registration check | OMAIB reviewers will check that this workflow is present and green before confirming registration |
-| Audit trail | Every push produces a downloadable `omaib-validation-report` artifact retained for 30 days |
+| Audit trail            | Every push produces a downloadable `omaib-validation-report` artifact retained for 30 days        |
 
 ---
 
@@ -114,22 +115,24 @@ jobs:
 
 The workflow runs in six steps:
 
-| Step | What it does |
-|---|---|
-| **Checkout** | Clones your repository into the runner |
-| **Set up Python** | Installs Python 3.12 on the runner |
-| **Install omaib-contracts** | Fetches the latest CLI tools from GitHub |
+| Step                          | What it does                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------------- |
+| **Checkout**                  | Clones your repository into the runner                                          |
+| **Set up Python**             | Installs Python 3.12 on the runner                                              |
+| **Install omaib-contracts**   | Fetches the latest CLI tools from GitHub                                        |
 | **Validate adapter (Gate 1)** | Runs `omaib-validate-adapter` and saves the JSON report; captures the exit code |
-| **Gate status summary** | Prints a human-readable gate summary to the job log |
-| **Upload validation report** | Uploads `validation_report.json` as a downloadable artifact (30-day retention) |
+| **Gate status summary**       | Prints a human-readable gate summary to the job log                             |
+| **Upload validation report**  | Uploads `validation_report.json` as a downloadable artifact (30-day retention)  |
 
-The workflow **passes** if the exit code from `omaib-validate-adapter` is `0` (Gate 1 reached). It **fails** with a clear error annotation if Gate 1 is not reached, and the pipeline is blocked from merging.
+The workflow **passes** if the exit code from `omaib-validate-adapter` is `0` (Gate 1 reached). It **fails** with a
+clear error annotation if Gate 1 is not reached, and the pipeline is blocked from merging.
 
 ---
 
 ## Step 4 — Customise the Trigger Branches (Optional)
 
-The template triggers on pushes to `main` and `develop`. If your repository uses a different branch naming convention, update the `branches` list:
+The template triggers on pushes to `main` and `develop`. If your repository uses a different branch naming convention,
+update the `branches` list:
 
 ```yaml
 on:
@@ -156,7 +159,8 @@ git commit -m "ci: add OMAIB DAP validation workflow"
 git push origin main
 ```
 
-After pushing, navigate to your repository on GitHub, click the **Actions** tab, and watch the `OMAIB DAP Validation` workflow run. A green tick means Gate 1 passed in CI.
+After pushing, navigate to your repository on GitHub, click the **Actions** tab, and watch the `OMAIB DAP Validation`
+workflow run. A green tick means Gate 1 passed in CI.
 
 ---
 
@@ -216,13 +220,17 @@ If the workflow fails after you've made changes to your adapter files:
 3. The errors printed there are identical to what you'd see running `omaib-validate-adapter omaib-adapter/` locally
 4. Fix the errors, commit, and push — the workflow re-runs automatically
 
-If you see an error in the **Install omaib-contracts** step (e.g., network timeout), re-run the job using the **Re-run failed jobs** button. If it fails consistently, check the [omaib-contracts repository](https://github.com/omaib/omaib-contracts) for known issues.
+If you see an error in the **Install omaib-contracts** step (e.g., network timeout), re-run the job using the **Re-run
+failed jobs** button. If it fails consistently, check the
+[omaib-contracts repository](https://github.com/omaib/omaib-contracts) for known issues.
 
 ---
 
 ## What OMAIB Sees
 
-When your registration is reviewed, OMAIB checks for the presence of this workflow in `.github/workflows/validate-dap.yml` and that the most recent run is green. This is a checklist item in the registration review process — it's not optional.
+When your registration is reviewed, OMAIB checks for the presence of this workflow in
+`.github/workflows/validate-dap.yml` and that the most recent run is green. This is a checklist item in the registration
+review process — it's not optional.
 
 ---
 

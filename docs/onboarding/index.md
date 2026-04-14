@@ -1,24 +1,26 @@
 # PI Onboarding Guide
 
-This directory contains the complete onboarding guide for Principal Investigators (PIs) contributing Domain Adapter Packs (DAPs) to the OMAIB benchmarking platform.
+This directory contains the complete onboarding guide for Principal Investigators (PIs) contributing Domain Adapter
+Packs (DAPs) to the OMAIB benchmarking platform.
 
-Each document covers one stage of the onboarding journey and can be read independently. Together they form a complete walkthrough from first contact with OMAIB to a live, maintained benchmark.
+Each document covers one stage of the onboarding journey and can be read independently. Together they form a complete
+walkthrough from first contact with OMAIB to a live, maintained benchmark.
 
 ---
 
 ## Document Index
 
-| # | Document | What it covers | Estimated time |
-|---|---|---|---|
-| 00 | [Overview: What is OMAIB?](00-OVERVIEW.md) | Platform model, gate system, end-to-end journey | 10 min read |
-| 01 | [Prerequisites and Setup](01-PREREQUISITES.md) | GitHub, Python, CLI tools, environment | 15–20 min |
-| 02 | [Creating Your Adapter](02-CREATE-ADAPTER.md) | Scaffolding and filling the adapter files | 20–30 min |
-| 03 | [The Four Required Files](03-FOUR-FILES.md) | Field-by-field reference for all four files | 20–30 min read |
-| 04 | [Local Validation](04-VALIDATION.md) | Running validation, understanding gate scores | 10–15 min |
-| 05 | [CI Setup](05-CI-SETUP.md) | GitHub Actions validation workflow | 10 min |
-| 06 | [Registration](06-REGISTER.md) | Submitting registration issue, installing the bot | 15–30 min |
-| 07 | [Releases and Updates](07-RELEASE-AND-UPDATES.md) | Tagging, versioning, the update lifecycle | 15–20 min |
-| 08 | [Troubleshooting](08-TROUBLESHOOTING.md) | Common errors and fixes at every stage | Reference |
+| #   | Document                                          | What it covers                                    | Estimated time |
+| --- | ------------------------------------------------- | ------------------------------------------------- | -------------- |
+| 00  | [Overview: What is OMAIB?](00-OVERVIEW.md)        | Platform model, gate system, end-to-end journey   | 10 min read    |
+| 01  | [Prerequisites and Setup](01-PREREQUISITES.md)    | GitHub, Python, CLI tools, environment            | 15–20 min      |
+| 02  | [Creating Your Adapter](02-CREATE-ADAPTER.md)     | Scaffolding and filling the adapter files         | 20–30 min      |
+| 03  | [The Four Required Files](03-FOUR-FILES.md)       | Field-by-field reference for all four files       | 20–30 min read |
+| 04  | [Local Validation](04-VALIDATION.md)              | Running validation, understanding gate scores     | 10–15 min      |
+| 05  | [CI Setup](05-CI-SETUP.md)                        | GitHub Actions validation workflow                | 10 min         |
+| 06  | [Registration](06-REGISTER.md)                    | Submitting registration issue, installing the bot | 15–30 min      |
+| 07  | [Releases and Updates](07-RELEASE-AND-UPDATES.md) | Tagging, versioning, the update lifecycle         | 15–20 min      |
+| 08  | [Troubleshooting](08-TROUBLESHOOTING.md)          | Common errors and fixes at every stage            | Reference      |
 
 ---
 
@@ -38,9 +40,11 @@ Total time for an experienced PI with a well-documented dataset: ~2 hours.
 
 ## Key Concepts
 
-**Domain Adapter Pack (DAP):** The metadata bundle describing your benchmark. Lives in `omaib-adapter/` in your repository. Contains four required YAML/JSON files.
+**Domain Adapter Pack (DAP):** The metadata bundle describing your benchmark. Lives in `omaib-adapter/` in your
+repository. Contains four required YAML/JSON files.
 
-**Gate system:** Four progressive validation levels. Gate 1 is local/CI schema validation. Gates 2–4 are run by the platform after registration.
+**Gate system:** Four progressive validation levels. Gate 1 is local/CI schema validation. Gates 2–4 are run by the
+platform after registration.
 
 **adapter_id:** Your unique identifier — always `dap-<your-slug>`.
 

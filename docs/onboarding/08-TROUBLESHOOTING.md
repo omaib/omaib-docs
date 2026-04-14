@@ -1,7 +1,7 @@
 ﻿# 08 — Troubleshooting
 
-> **Audience**: Principal Investigators
-> **Reference**: Use this document when something goes wrong at any step of the onboarding process
+> **Audience**: Principal Investigators **Reference**: Use this document when something goes wrong at any step of the
+> onboarding process
 
 ---
 
@@ -13,7 +13,9 @@ Find your error in the section that matches where you are in the onboarding proc
 - The root cause
 - The fix
 
-If your problem isn't listed here, [open an issue on omaib-contracts](https://github.com/omaib/omaib-contracts/issues/new) titled `[PI Support] <brief description>`.
+If your problem isn't listed here,
+[open an issue on omaib-contracts](https://github.com/omaib/omaib-contracts/issues/new) titled
+`[PI Support] <brief description>`.
 
 ---
 
@@ -163,7 +165,8 @@ Edit the mismatched file to match the canonical value in `benchmark_contract.yam
 - governance_policy.yaml: 'access_tier' must be one of ['open','registered','gated','custodian-only','hybrid','federated']
 ```
 
-**Fix:** Set a valid `access_tier` in `governance_policy.yaml`, and keep it consistent with your intended access model in `benchmark_contract.yaml` (`data_access.model`).
+**Fix:** Set a valid `access_tier` in `governance_policy.yaml`, and keep it consistent with your intended access model
+in `benchmark_contract.yaml` (`data_access.model`).
 
 ```bash
 # In governance_policy.yaml:
@@ -192,7 +195,8 @@ access_tier: gated
 }
 ```
 
-Or change `metrics.primary` in `benchmark_contract.yaml` to match an existing `properties` key in `scorecard_schema.json`.
+Or change `metrics.primary` in `benchmark_contract.yaml` to match an existing `properties` key in
+`scorecard_schema.json`.
 
 ---
 
@@ -229,7 +233,8 @@ Update all non-matching files to the correct version.
 "ratios": { "train": 0.70, "val": 0.15, "test": 0.15 }
 ```
 
-Ensure the three floats sum to exactly `1.0`. Note that floating point precision matters â€” `0.7 + 0.15 + 0.15 = 1.0` but `0.33 + 0.33 + 0.34 = 1.0` as well.
+Ensure the three floats sum to exactly `1.0`. Note that floating point precision matters â€” `0.7 + 0.15 + 0.15 = 1.0`
+but `0.33 + 0.33 + 0.34 = 1.0` as well.
 
 ---
 
@@ -253,12 +258,12 @@ Ensure the three floats sum to exactly `1.0`. Note that floating point precision
 
 **Possible causes and fixes:**
 
-| Cause | Fix |
-|---|---|
-| Workflow file is not in `.github/workflows/validate-dap.yml` exactly | Check the path â€” case-sensitive on Linux runners |
-| Push was to a branch not listed in `branches:` | Add your branch to the `branches:` list in the workflow |
-| No changes to `omaib-adapter/**` files | The `paths:` filter is active â€” push a change to an adapter file |
-| Actions are disabled for the repository | Go to Settings â†’ Actions â†’ Allow all actions |
+| Cause                                                                | Fix                                                                |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Workflow file is not in `.github/workflows/validate-dap.yml` exactly | Check the path â€” case-sensitive on Linux runners                 |
+| Push was to a branch not listed in `branches:`                       | Add your branch to the `branches:` list in the workflow            |
+| No changes to `omaib-adapter/**` files                               | The `paths:` filter is active â€” push a change to an adapter file |
+| Actions are disabled for the repository                              | Go to Settings â†’ Actions â†’ Allow all actions                   |
 
 ---
 
@@ -322,7 +327,8 @@ Fix any new errors, commit, and push.
 **Check:**
 
 - Issue title must start with `[PI Registration]` exactly (case-sensitive)
-- Confirm you opened the issue at [github.com/omaib/omaib-contracts/issues](https://github.com/omaib/omaib-contracts/issues), not your own repo
+- Confirm you opened the issue at
+  [github.com/omaib/omaib-contracts/issues](https://github.com/omaib/omaib-contracts/issues), not your own repo
 
 If both are correct and there is still no response after 48 hours, reply to the issue with a comment `@omaib-team ping`.
 
@@ -358,9 +364,12 @@ Then check the Actions tab to confirm the workflow has at least one successful r
   - Repository not accessible at https://github.com/<your-org>/<your-repo>
 ```
 
-**Fix for private repos:** First confirm the **omaib-platform-bot** GitHub App is installed on your repo with **Contents: Read** permission (see [06 — Registering Your Adapter with OMAIB](06-REGISTER.md)). Reply to your registration issue confirming App access.
+**Fix for private repos:** First confirm the **omaib-platform-bot** GitHub App is installed on your repo with
+**Contents: Read** permission (see [06 — Registering Your Adapter with OMAIB](06-REGISTER.md)). Reply to your
+registration issue confirming App access.
 
-If the OMAIB team explicitly asks for legacy fallback access (for org policy reasons), then add `omaib-bot` as a **Read** collaborator and reply to the issue once done.
+If the OMAIB team explicitly asks for legacy fallback access (for org policy reasons), then add `omaib-bot` as a
+**Read** collaborator and reply to the issue once done.
 
 **Fix for public repos:** Check that the repository URL in the issue body is correct and the repo is not archived.
 
@@ -390,7 +399,8 @@ Status: FAILED
   - Submitted field 'macro_F1' does not match scorecard_schema metric name 'macro_f1'
 ```
 
-**Fix:** Field names in `scorecard_schema.json` are case-sensitive. `macro_F1` and `macro_f1` are different. Check the exact field names and update `scorecard_schema.json` if needed, then bump the version and push.
+**Fix:** Field names in `scorecard_schema.json` are case-sensitive. `macro_F1` and `macro_f1` are different. Check the
+exact field names and update `scorecard_schema.json` if needed, then bump the version and push.
 
 ---
 
@@ -398,7 +408,10 @@ Status: FAILED
 
 ### Ingestion stuck after tagging a release
 
-**Fix:** The ingestion poll runs every 6 hours automatically. If you need an immediate refresh, open an issue on `omaib-contracts` requesting an expedited run, or the OMAIB team can manually dispatch the ingestion workflow via **Actions â†’ Adapter Ingestion Poll â†’ Run workflow** in the `omaibench` repository. There is no bot command for on-demand refresh.
+**Fix:** The ingestion poll runs every 6 hours automatically. If you need an immediate refresh, open an issue on
+`omaib-contracts` requesting an expedited run, or the OMAIB team can manually dispatch the ingestion workflow via
+**Actions â†’ Adapter Ingestion Poll â†’ Run workflow** in the `omaibench` repository. There is no bot command for
+on-demand refresh.
 
 ---
 
@@ -420,7 +433,8 @@ pip install --upgrade git+https://github.com/omaib/omaib-contracts.git
 omaib-validate-adapter omaib-adapter/   # re-run to see any updated field requirements
 ```
 
-If validation reports new required fields, add them to your adapter files, bump the version in all four files, commit, and push a new tag.
+If validation reports new required fields, add them to your adapter files, bump the version in all four files, commit,
+and push a new tag.
 
 ---
 
@@ -428,11 +442,11 @@ If validation reports new required fields, add them to your adapter files, bump 
 
 If none of the above resolves your issue:
 
-| Channel | Use for |
-|---|---|
-| [omaib-contracts Issues](https://github.com/omaib/omaib-contracts/issues) | Registration issues, platform bugs, schema questions |
-| [omaib-docs Discussions](https://github.com/omaib/omaib-docs/discussions) | General onboarding questions, peer support from other PIs |
-| Email: <omaib-ukomain-group@sheffield.ac.uk> | Sensitive data handling, institutional agreements, federated evaluation setup |
+| Channel                                                                   | Use for                                                                       |
+| ------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [omaib-contracts Issues](https://github.com/omaib/omaib-contracts/issues) | Registration issues, platform bugs, schema questions                          |
+| [omaib-docs Discussions](https://github.com/omaib/omaib-docs/discussions) | General onboarding questions, peer support from other PIs                     |
+| Email: <omaib-ukomain-group@sheffield.ac.uk>                              | Sensitive data handling, institutional agreements, federated evaluation setup |
 
 When filing a support issue, include:
 
@@ -443,4 +457,4 @@ When filing a support issue, include:
 
 ---
 
- [07 — Releasing Your Adapter and Managing Updates](07-RELEASE-AND-UPDATES.md) | [Back to index](index.md)
+[07 — Releasing Your Adapter and Managing Updates](07-RELEASE-AND-UPDATES.md) | [Back to index](index.md)

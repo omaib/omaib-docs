@@ -19,4 +19,5 @@ Public-facing documentation source for OMAIB.
 
 ## Repo Docs
 
-Each code repository still maintains a `docs/` folder for implementation-specific docs. This repo is the public publication layer.
+Each code repository still maintains a `docs/` folder for implementation-specific docs. This repo is the public
+publication layer.

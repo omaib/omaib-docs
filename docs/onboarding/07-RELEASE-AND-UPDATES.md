@@ -1,15 +1,15 @@
 # 07 — Releasing Your Adapter and Managing Updates
 
-> **Audience**: Principal Investigators
-> **Time to complete**: 15–20 minutes (first release); 5–10 minutes (subsequent updates)
-> **Prerequisites**: Registration confirmed (see [06 — Registering Your Adapter with OMAIB](06-REGISTER.md))
+> **Audience**: Principal Investigators **Time to complete**: 15–20 minutes (first release); 5–10 minutes (subsequent
+> updates) **Prerequisites**: Registration confirmed (see [06 — Registering Your Adapter with OMAIB](06-REGISTER.md))
 > **Next step**: [08 — Troubleshooting](08-TROUBLESHOOTING.md)
 
 ---
 
 ## What This Document Covers
 
-After registration is confirmed, you tag an initial release to signal to the OMAIB platform that your benchmark is ready for live ingestion. This document covers:
+After registration is confirmed, you tag an initial release to signal to the OMAIB platform that your benchmark is ready
+for live ingestion. This document covers:
 
 1. How to tag and push your first release
 2. How the platform polls for changes
@@ -21,17 +21,20 @@ After registration is confirmed, you tag an initial release to signal to the OMA
 
 ## Semantic Versioning in OMAIB
 
-All four adapter files share a single `version` field that follows [Semantic Versioning](https://semver.org/): `MAJOR.MINOR.PATCH`.
+All four adapter files share a single `version` field that follows [Semantic Versioning](https://semver.org/):
+`MAJOR.MINOR.PATCH`.
 
-| Version type | When to use | Example |
-|---|---|---|
-| **Patch** (`0.1.x`) | Corrections that don't change schema or evaluation behaviour | Fixing a typo in `description`, correcting `storage_gb`, adding `citation.doi` |
-| **Minor** (`0.x.0`) | New capabilities that are backwards-compatible | Adding a new secondary metric, adding an optional field, adding `trust_toolkit.yaml` |
-| **Major** (`x.0.0`) | Breaking changes | Changing `benchmark_id`, changing the `primary` metric, restructuring the scorecard schema |
+| Version type        | When to use                                                  | Example                                                                                    |
+| ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| **Patch** (`0.1.x`) | Corrections that don't change schema or evaluation behaviour | Fixing a typo in `description`, correcting `storage_gb`, adding `citation.doi`             |
+| **Minor** (`0.x.0`) | New capabilities that are backwards-compatible               | Adding a new secondary metric, adding an optional field, adding `trust_toolkit.yaml`       |
+| **Major** (`x.0.0`) | Breaking changes                                             | Changing `benchmark_id`, changing the `primary` metric, restructuring the scorecard schema |
 
-> **Rule of thumb**: If evaluators who have already submitted scorecards would need to re-submit, it's a breaking (major) change.
+> **Rule of thumb**: If evaluators who have already submitted scorecards would need to re-submit, it's a breaking
+> (major) change.
 
-When you version-bump, update the `version` field in **all four required files** to the same new value. A mismatch in version strings across files causes a Gate 1 validation error.
+When you version-bump, update the `version` field in **all four required files** to the same new value. A mismatch in
+version strings across files causes a Gate 1 validation error.
 
 ---
 
@@ -51,7 +54,8 @@ git tag -a v0.1.0 -m "Initial OMAIB DAP release — Gate 1 validated"
 git push origin v0.1.0
 ```
 
-The CI workflow will re-run on this release event (`release: [published]` in the workflow trigger). Check the Actions tab to confirm it passes.
+The CI workflow will re-run on this release event (`release: [published]` in the workflow trigger). Check the Actions
+tab to confirm it passes.
 
 ### Creating a formal GitHub Release (recommended)
 
@@ -63,7 +67,8 @@ gh release create v0.1.0 \
   --notes "Initial validated release of the $(grep 'adapter_id:' omaib-adapter/benchmark_contract.yaml | head -1 | awk '{print $2}') adapter."
 ```
 
-Or via the GitHub web interface: go to your repository → **Releases** → **Draft a new release** → set tag `v0.1.0` → publish.
+Or via the GitHub web interface: go to your repository → **Releases** → **Draft a new release** → set tag `v0.1.0` →
+publish.
 
 ---
 
@@ -75,10 +80,10 @@ After the tag is pushed, the OMAIB platform picks up your release within its nex
 
 The ingestion pipeline runs on a **fixed 6-hour cron schedule** for all registered adapters.
 
-| Trigger | Frequency |
-|---|---|
-| Scheduled (all registered adapters) | Every 6 hours |
-| Manual on-demand | Via **Actions → Adapter Ingestion Poll → Run workflow** in the `omaibench` repository (`workflow_dispatch`) |
+| Trigger                             | Frequency                                                                                                   |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Scheduled (all registered adapters) | Every 6 hours                                                                                               |
+| Manual on-demand                    | Via **Actions → Adapter Ingestion Poll → Run workflow** in the `omaibench` repository (`workflow_dispatch`) |
 
 ### What happens at ingestion
 
@@ -141,7 +146,8 @@ git push origin v0.2.0
 
 ### Major update (breaking change)
 
-Major changes that affect the leaderboard (e.g., changing the primary metric) require coordination with OMAIB to avoid disrupting existing submissions. Before making a major change:
+Major changes that affect the leaderboard (e.g., changing the primary metric) require coordination with OMAIB to avoid
+disrupting existing submissions. Before making a major change:
 
 1. Open a new issue on `omaib-contracts` titled: `[PI Update] <Your-Adapter-ID> — Breaking Change`
 2. Describe the change and why it's necessary
@@ -192,14 +198,14 @@ When bumping the version, update **all four files**:
 
 ## What Requires a New Registration Issue?
 
-| Change | Process |
-|---|---|
-| Patch / minor changes to adapter files | Tag and push — automatic pickup |
-| Adding `trust_toolkit.yaml` or `assurance_crosswalk.yaml` | Tag and push — triggers gate review |
-| Changing `benchmark_id` | Open `[PI Update]` issue — breaking change |
-| Changing `primary` metric | Open `[PI Update]` issue — breaking change |
-| Transferring ownership (new PI) | Open `[PI Transfer]` issue |
-| Taking the benchmark offline | Open `[PI Deprecation]` issue |
+| Change                                                    | Process                                    |
+| --------------------------------------------------------- | ------------------------------------------ |
+| Patch / minor changes to adapter files                    | Tag and push — automatic pickup            |
+| Adding `trust_toolkit.yaml` or `assurance_crosswalk.yaml` | Tag and push — triggers gate review        |
+| Changing `benchmark_id`                                   | Open `[PI Update]` issue — breaking change |
+| Changing `primary` metric                                 | Open `[PI Update]` issue — breaking change |
+| Transferring ownership (new PI)                           | Open `[PI Transfer]` issue                 |
+| Taking the benchmark offline                              | Open `[PI Deprecation]` issue              |
 
 ---
 
@@ -208,10 +214,13 @@ When bumping the version, update **all four files**:
 If you need to retire a benchmark:
 
 1. Open an issue: `[PI Deprecation] <adapter-id>` on `omaib-contracts`
-2. Bump the version (patch) in **all four adapter files**, validate locally, tag, and push — this signals the final committed state of the adapter before archival
+2. Bump the version (patch) in **all four adapter files**, validate locally, tag, and push — this signals the final
+   committed state of the adapter before archival
 3. OMAIB will mark the leaderboard as archived but preserve historical submissions
 
-> **Do not add a `status` field to `benchmark_contract.yaml`.** The schema uses `additionalProperties: false`; any field not defined in the schema will cause Gate 1 validation to fail. Deprecation state is managed server-side by the platform once your issue is processed.
+> **Do not add a `status` field to `benchmark_contract.yaml`.** The schema uses `additionalProperties: false`; any field
+> not defined in the schema will cause Gate 1 validation to fail. Deprecation state is managed server-side by the
+> platform once your issue is processed.
 
 ---
 
