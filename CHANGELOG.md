@@ -3,7 +3,7 @@
 
 #### Other Changes
 
-* [#1](https://github.com/omaib/omaib-docs/pull/1): feat: OMAIB Documentation Site — MkDocs Material with CI & Release Automation
+* [#1](https://github.com/omaib/omaib-docs/pull/1): feat: OMAIB Platform Documentation Site — MkDocs Material with CI & Release Automation
 
 
 # Changelog
