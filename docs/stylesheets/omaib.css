@@ -7,7 +7,7 @@
   --omaib-slate-600: #475569;
   --omaib-slate-800: #1e293b;
   --omaib-slate-900: #0f172a;
-  --omaib-white:     #ffffff;
+  --omaib-white:     #fff;
 }
 
 /* ── Material theme colour overrides ────────────────────────────────────── */
@@ -24,32 +24,38 @@
   background-color: var(--omaib-white);
   color: var(--omaib-slate-900);
   border-bottom: 1px solid var(--omaib-slate-200);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
 }
+
 .md-header__button,
 .md-header__title,
 .md-header-nav__button {
   color: var(--omaib-slate-900);
 }
+
 .md-header__button:hover {
   color: var(--omaib-slate-600);
 }
+
 /* Search input in the header */
 .md-search__input {
   background-color: var(--omaib-slate-200);
   color: var(--omaib-slate-900);
-  border: 0px solid var(--omaib-slate-100);
+  border: 0 solid var(--omaib-slate-100);
   border-radius: 0.375rem;
 }
+
 .md-search__input::placeholder {
   color: var(--omaib-slate-400);
 }
+
 .md-search__input:focus,
 .md-search__input:hover {
   background-color: var(--omaib-white);
   border-color: var(--omaib-slate-400);
-  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 0 0 2px rgb(15 23 42 / 8%);
 }
+
 /* Search icon visibility */
 .md-search__icon {
   color: var(--omaib-slate-600);
@@ -60,11 +66,13 @@
   background-color: var(--omaib-white);
   border-bottom: 1px solid var(--omaib-slate-200);
 }
+
 .md-tabs__link {
   color: var(--omaib-slate-600);
   font-weight: 500;
   font-size: 0.875rem;
 }
+
 .md-tabs__link:hover,
 .md-tabs__link--active {
   color: var(--omaib-slate-900);
@@ -76,15 +84,19 @@
   background-color: var(--omaib-slate-900);
   color: var(--omaib-slate-400);
 }
+
 .md-footer-meta {
   background-color: var(--omaib-slate-900);
 }
+
 .md-footer a {
   color: var(--omaib-slate-400);
 }
+
 .md-footer a:hover {
   color: var(--omaib-white);
 }
+
 .md-footer-nav__link {
   color: var(--omaib-slate-400);
 }
@@ -96,6 +108,7 @@
   vertical-align: middle;
   margin-right: 0.5rem;
 }
+
 .omaib-logo-img--footer {
   height: 2rem;
 }
@@ -107,8 +120,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 .omaib-org-nav__brand {
   display: flex;
   align-items: center;
@@ -118,14 +132,17 @@
   font-weight: 600;
   font-size: 1rem;
 }
+
 .omaib-org-nav__brand .omaib-logo-img {
   height: 1.5rem;
 }
+
 .omaib-org-nav__links {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
+
 .omaib-org-nav__links a {
   color: var(--omaib-slate-400);
   font-size: 0.8125rem;
@@ -135,10 +152,11 @@
   text-decoration: none;
   transition: color 0.15s, background-color 0.15s;
 }
+
 .omaib-org-nav__links a:hover,
 .omaib-org-nav__links a.active {
   color: var(--omaib-white);
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgb(255 255 255 / 8%);
 }
 
 /* ── Footer columns (matches the org site 4-col grid) ───────────────────── */
@@ -150,45 +168,54 @@
   margin: 0 auto;
   padding: 3rem 1.5rem 2rem;
 }
-@media (max-width: 768px) {
+
+@media (width <= 768px) {
   .omaib-footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (max-width: 480px) {
+
+@media (width <= 480px) {
   .omaib-footer-grid {
     grid-template-columns: 1fr;
   }
 }
+
 .omaib-footer-grid h3 {
   color: var(--omaib-white);
   font-size: 0.875rem;
   font-weight: 600;
   margin: 0 0 0.75rem;
 }
+
 .omaib-footer-grid ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 .omaib-footer-grid li {
   margin-bottom: 0.5rem;
 }
+
 .omaib-footer-grid a {
   color: var(--omaib-slate-400);
   font-size: 0.8125rem;
   text-decoration: none;
   transition: color 0.15s;
 }
+
 .omaib-footer-grid a:hover {
   color: var(--omaib-white);
 }
+
 .omaib-footer-grid .omaib-footer-about p {
   color: var(--omaib-slate-400);
   font-size: 0.8125rem;
   line-height: 1.6;
   margin: 0;
 }
+
 .omaib-footer-bottom {
   max-width: 72rem;
   margin: 0 auto;
@@ -202,13 +229,16 @@
   font-size: 0.8125rem;
   color: var(--omaib-slate-400);
 }
+
 .omaib-footer-bottom a {
   color: var(--omaib-slate-400);
   text-decoration: none;
 }
+
 .omaib-footer-bottom a:hover {
   color: var(--omaib-white);
 }
+
 .omaib-footer-bottom__links {
   display: flex;
   gap: 1.5rem;
