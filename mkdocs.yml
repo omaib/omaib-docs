@@ -1,0 +1,96 @@
+site_name: OMAIB Documentation
+site_url: https://omaib.github.io/omaib-docs/
+site_description: Public documentation for the Open Multimodal AI Benchmark (OMAIB).
+site_author: OMAIB Contributors
+repo_url: https://github.com/omaib/omaib-docs
+repo_name: omaib/omaib-docs
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+  logo: images/omaib-logo.png
+  favicon: images/omaib-logo.png
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/omaib.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/omaib
+      name: OMAIB on GitHub
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+  - def_list
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+      fallback_to_build_date: true
+      enable_git_follow: false
+      strict: false
+  - git-committers:
+      repository: omaib/omaib-docs
+      branch: main
+      enabled: !ENV [CI, false]
+
+nav:
+  - Home: index.md
+  - PI Onboarding:
+      - Overview: onboarding/index.md
+      - "00 — What is OMAIB?": onboarding/00-OVERVIEW.md
+      - "01 — Prerequisites": onboarding/01-PREREQUISITES.md
+      - "02 — Creating Your Adapter": onboarding/02-CREATE-ADAPTER.md
+      - "03 — The Four Required Files": onboarding/03-FOUR-FILES.md
+      - "04 — Local Validation": onboarding/04-VALIDATION.md
+      - "05 — CI Setup": onboarding/05-CI-SETUP.md
+      - "06 — Registration": onboarding/06-REGISTER.md
+      - "07 — Releases & Updates": onboarding/07-RELEASE-AND-UPDATES.md
+      - "08 — Troubleshooting": onboarding/08-TROUBLESHOOTING.md
+  - Public Docs Index: PUBLIC_DOCS_INDEX.md
+
+copyright: "&copy; 2026 OMAIB Contributors"

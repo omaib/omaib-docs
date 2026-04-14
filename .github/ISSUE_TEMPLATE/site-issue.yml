@@ -1,0 +1,60 @@
+name: Site or Theme Issue
+description: Report a problem with the documentation site itself (styling, navigation, build)
+title: "[Site] "
+labels: ["type: bug", "type: style"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for issues related to the MkDocs site, theme,
+        navigation, CSS, or build pipeline — not the documentation content itself.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Navigation or layout
+        - Styling or CSS
+        - Search
+        - Build or CI failure
+        - Mobile responsiveness
+        - Accessibility
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: page_url
+    attributes:
+      label: Affected page (if specific)
+      description: URL where the issue is visible
+      placeholder: https://omaib.github.io/omaib-docs/
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the issue, including browser and viewport if relevant
+      placeholder: |
+        The footer overlaps the content on mobile (iPhone 14, Safari).
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Drag and drop a screenshot if applicable
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
