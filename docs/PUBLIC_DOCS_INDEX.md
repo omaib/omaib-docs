@@ -28,5 +28,3 @@ Step-by-step guide for Principal Investigators contributing Domain Adapter Packs
 | `omaib-docs/onboarding/06-REGISTER` | PI registration issue, OMAIB Platform Bot |
 | `omaib-docs/onboarding/07-RELEASE-AND-UPDATES` | Tagging releases, versioning, update lifecycle |
 | `omaib-docs/onboarding/08-TROUBLESHOOTING` | Common errors and fixes at every stage |
-
-

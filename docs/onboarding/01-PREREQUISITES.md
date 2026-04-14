@@ -1,8 +1,8 @@
 # 01 — Prerequisites and Environment Setup
 
-> **Audience**: Principal Investigators new to OMAIB  
-> **Time to complete**: 15–20 minutes  
-> **Before you start**: Read [00 — Overview of OMAIB](00-OVERVIEW.md) to understand the OMAIB model  
+> **Audience**: Principal Investigators new to OMAIB
+> **Time to complete**: 15–20 minutes
+> **Before you start**: Read [00 — Overview of OMAIB](00-OVERVIEW.md) to understand the OMAIB model
 > **Next step**: [02 — Creating Your Domain Adapter Pack](02-CREATE-ADAPTER.md)
 
 ---
@@ -64,7 +64,8 @@ python3 --version
 ```
 
 You should see something like:
-```
+
+```text
 Python 3.12.3
 ```
 
@@ -74,7 +75,7 @@ If you see Python 3.10 or earlier, you need to upgrade before continuing.
 
 | Platform | Recommended method |
 |---|---|
-| **macOS** | `brew install python@3.12` or download from [python.org](https://www.python.org/downloads/) |
+| **macOS** | `brew install <python@3.1>2` or download from [python.org](https://www.python.org/downloads/) |
 | **Ubuntu / Debian** | `sudo apt install python3.12 python3.12-venv python3.12-pip` |
 | **Windows** | Download from [python.org](https://www.python.org/downloads/) — tick "Add to PATH" during install |
 
@@ -115,7 +116,7 @@ The `omaib-contracts` package provides:
 
 ```bash
 pip install git+https://github.com/omaib/omaib-contracts.git
-# OR, 
+# OR,
 pip install omaib-contracts
 ```
 
@@ -155,7 +156,7 @@ Your commits to the adapter repo are how OMAIB tracks version history. Make sure
 
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+git config --global user.email "<you@example.com>"
 ```
 
 Verify:
@@ -204,5 +205,6 @@ If all six boxes are checked, you're ready to scaffold your adapter.
 
 ---
 
-## Next 
+## Next
+
 → [02 — Creating Your Domain Adapter Pack](02-CREATE-ADAPTER.md)

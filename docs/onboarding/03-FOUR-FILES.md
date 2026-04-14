@@ -1,8 +1,8 @@
 # 03 — The Four Required Files: A Field-by-Field Reference
 
-> **Audience**: Principal Investigators  
-> **Time to read**: 20–30 minutes  
-> **Prerequisites**: [02 — Creating Your Domain Adapter Pack](02-CREATE-ADAPTER.md) — adapter already scaffolded  
+> **Audience**: Principal Investigators
+> **Time to read**: 20–30 minutes
+> **Prerequisites**: [02 — Creating Your Domain Adapter Pack](02-CREATE-ADAPTER.md) — adapter already scaffolded
 > **Next step**: [04 — Local Validation and Gate Scores](04-VALIDATION.md)
 
 ---
@@ -377,5 +377,6 @@ Running `omaib-validate-adapter omaib-adapter/` checks all of these automaticall
 
 ---
 
-## Next 
+## Next
+
 → [04 — Local Validation and Gate Scores](04-VALIDATION.md)

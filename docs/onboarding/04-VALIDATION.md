@@ -1,9 +1,9 @@
 # 04 — Local Validation and Gate Scores
 
-> **Audience**: Principal Investigators  
-> **Time to complete**: 10–15 minutes  
-> **Prerequisites**: All four required files in `omaib-adapter/` with no `<placeholder>` values 
-> **Previous step**: [03 — The Four Required Files: A Field-by-Field Reference](03-FOUR-FILES.md) 
+> **Audience**: Principal Investigators
+> **Time to complete**: 10–15 minutes
+> **Prerequisites**: All four required files in `omaib-adapter/` with no `<placeholder>` values
+> **Previous step**: [03 — The Four Required Files: A Field-by-Field Reference](03-FOUR-FILES.md)
 > **Next step**: [05 — Setting Up Continuous Validation with GitHub Action](05-CI-SETUP.md)
 
 ---
@@ -32,7 +32,7 @@ omaib-validate-adapter omaib-adapter/
 
 **Typical successful output:**
 
-```
+```text
 [OK] benchmark_contract.yaml
 [OK] data_profile.json
 [OK] governance_policy.yaml
@@ -45,7 +45,7 @@ Gate 1 Ready: YES
 
 **Typical output with errors:**
 
-```
+```text
 [FAIL] benchmark_contract.yaml
          - 'title' contains placeholder text ('<placeholder>')
          - 'metrics.primary' value 'rmse' not found in scorecard_schema.json properties
@@ -69,7 +69,7 @@ omaib-gate-status omaib-adapter/
 
 **Example output (Gate Readiness Score 100%):**
 
-```
+```text
 Gate Status for: omaib-adapter/
 
   [PASS] Gate 1: READY  (All required DAP files valid; governance boundary and export policy recorded.)
@@ -150,7 +150,7 @@ Local validation only covers Gate 1. Gates 2–4 are run by the OMAIB platform a
 
 ### Error: "contains placeholder text"
 
-```
+```text
 - 'title' contains placeholder text ('<placeholder>')
 ```
 
@@ -166,7 +166,7 @@ Any match means a placeholder remains. Replace it with your actual value and re-
 
 ### Error: "required field is null"
 
-```
+```text
 - 'size_estimate.samples' is null (required field)
 ```
 
@@ -180,7 +180,7 @@ Any match means a placeholder remains. Replace it with your actual value and re-
 
 ### Error: "metrics.primary not found in scorecard_schema.json"
 
-```
+```text
 - 'metrics.primary' value 'rmse' not found in scorecard_schema.json properties
 ```
 
@@ -200,7 +200,7 @@ Alternatively, change `metrics.primary` in `benchmark_contract.yaml` to match an
 
 ### Error: "access_tier mismatch"
 
-```
+```text
 - 'access_tier' (open) does not match 'data_access.model' in benchmark_contract.yaml (restricted)
 ```
 
@@ -219,7 +219,7 @@ access_tier: gated    # ← must be semantically consistent with data_access.mod
 
 ### Error: "adapter_id mismatch across files"
 
-```
+```text
 - adapter_id 'dap-sonair-v2' in data_profile.json does not match 'dap-sonair' in benchmark_contract.yaml
 ```
 
@@ -235,7 +235,7 @@ All lines should show the same value.
 
 ### Error: "ratios do not sum to 1.0"
 
-```
+```text
 - splits.ratios values sum to 0.95, expected 1.0
 ```
 
@@ -249,7 +249,7 @@ All lines should show the same value.
 
 ### Warning (not a blocker): "recommended field missing"
 
-```
+```text
 ⚠  citation.doi not set — adapter discoverability will be reduced
 ⚠  provenance_fields not set
 ```
@@ -262,7 +262,7 @@ Warnings don't prevent Gate 1 from passing. Fill them in when your dataset has a
 
 The recommended local iteration loop:
 
-```
+```text
 1. Edit a file
 2. Run:  omaib-validate-adapter omaib-adapter/
 3. Fix any errors
@@ -287,5 +287,6 @@ You can do both in any order, but setting up CI first means you get automatic va
 
 ---
 
-## Next 
+## Next
+
 → [05 — Setting Up Continuous Validation with GitHub Action](05-CI-SETUP.md)

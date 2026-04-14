@@ -1,8 +1,8 @@
 # 05 — Setting Up Continuous Validation with GitHub Actions
 
-> **Audience**: Principal Investigators  
-> **Time to complete**: 10 minutes  
-> **Prerequisites**: Gate 1 passing locally (see [04 — Local Validation and Gate Scores](04-VALIDATION.md))  
+> **Audience**: Principal Investigators
+> **Time to complete**: 10 minutes
+> **Prerequisites**: Gate 1 passing locally (see [04 — Local Validation and Gate Scores](04-VALIDATION.md))
 > **Next step**: [06 — Registering Your Adapter with OMAIB](06-REGISTER.md)
 
 ---
@@ -226,5 +226,6 @@ When your registration is reviewed, OMAIB checks for the presence of this workfl
 
 ---
 
-## Next 
+## Next
+
 → [06 — Registering Your Adapter with OMAIB](06-REGISTER.md)

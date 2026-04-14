@@ -1,7 +1,7 @@
 # PI Onboarding — 00: What is OMAIB and How Does It Work for You?
 
-**Audience**: Domain Project PIs and their teams  
-**Time to read**: 5 minutes  
+**Audience**: Domain Project PIs and their teams
+**Time to read**: 5 minutes
 **What you will understand**: The OMAIB model, your role in it, and what you actually need to do
 
 ---
@@ -19,7 +19,7 @@ OMAIB (Open Multimodal AI Benchmarking) is an open benchmarking platform for AI 
 
 ## The Core Model
 
-```
+```text
 You (PI team)                  OMAIB Platform
 ─────────────                  ──────────────
 Create adapter files     →     Platform reads them automatically

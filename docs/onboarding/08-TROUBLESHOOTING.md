@@ -1,6 +1,6 @@
 ﻿# 08 — Troubleshooting
 
-> **Audience**: Principal Investigators  
+> **Audience**: Principal Investigators
 > **Reference**: Use this document when something goes wrong at any step of the onboarding process
 
 ---
@@ -8,6 +8,7 @@
 ## How to Use This Document
 
 Find your error in the section that matches where you are in the onboarding process. Each entry has:
+
 - The exact error message or symptom
 - The root cause
 - The fix
@@ -21,13 +22,15 @@ If your problem isn't listed here, [open an issue on omaib-contracts](https://gi
 ### `omaib-init-adapter: command not found`
 
 **Symptom:**
-```
+
+```text
 bash: omaib-init-adapter: command not found
 ```
 
 **Cause:** `omaib-contracts` is not installed, or your virtual environment is not activated.
 
 **Fix:**
+
 ```bash
 # 1. Activate your virtual environment first
 source .venv/bin/activate        # macOS / Linux
@@ -41,6 +44,7 @@ omaib-init-adapter --help
 ```
 
 If step 1 shows `(base)` in your prompt and you're using conda, you may need to use `conda create` instead:
+
 ```bash
 conda create -n omaib python=3.12 -y
 conda activate omaib
@@ -52,13 +56,15 @@ pip install git+https://github.com/omaib/omaib-contracts.git
 ### `pip install` fails with `git clone` error
 
 **Symptom:**
-```
+
+```text
 ERROR: Error when trying to get requirement for URL 'git+https://github.com/omaib/omaib-contracts.git'
 ```
 
 **Cause:** Git is not installed, or is not in PATH.
 
 **Fix:**
+
 ```bash
 # Check git is available
 git --version
@@ -74,7 +80,8 @@ git --version
 ### Python version too old
 
 **Symptom:**
-```
+
+```text
 ERROR: Package 'omaib-contracts' requires a different Python: 3.9.x not in '>=3.11'
 ```
 
@@ -87,16 +94,19 @@ ERROR: Package 'omaib-contracts' requires a different Python: 3.9.x not in '>=3.
 ### `omaib-init-adapter` complains the directory already exists
 
 **Symptom:**
-```
+
+```text
 Error: omaib-adapter/ already exists. Use --force to overwrite.
 ```
 
 **Fix:** If you want to re-scaffold from scratch:
+
 ```bash
 omaib-init-adapter omaib-adapter/ --slug <your-slug> --force
 ```
 
 **Warning:** `--force` overwrites existing files. If you've already filled in values, back them up first:
+
 ```bash
 cp -r omaib-adapter/ omaib-adapter-backup/
 omaib-init-adapter omaib-adapter/ --slug <your-slug> --force
@@ -109,13 +119,15 @@ omaib-init-adapter omaib-adapter/ --slug <your-slug> --force
 ### Gate 1 BLOCKED — placeholder text remaining
 
 **Symptom:**
-```
+
+```text
 Gate 1 score: 23/100
 - benchmark_contract.yaml Line 8: 'title' contains placeholder text ('<placeholder>')
 - governance_policy.yaml: 'custodian_boundary.controller' contains placeholder text
 ```
 
 **Fix:** Find all remaining placeholders:
+
 ```bash
 grep -rn "<" omaib-adapter/
 ```
@@ -127,12 +139,14 @@ Every line returned contains a placeholder. Replace each `<...>` with real conte
 ### `adapter_id` or `benchmark_id` mismatch
 
 **Symptom:**
-```
-- Cross-file consistency: adapter_id 'dap-sonair-v2' in data_profile.json 
+
+```text
+- Cross-file consistency: adapter_id 'dap-sonair-v2' in data_profile.json
   does not match 'dap-sonair' in benchmark_contract.yaml
 ```
 
 **Fix:** List the `adapter_id` value in all files and make them identical:
+
 ```bash
 grep "adapter_id\|benchmark_id" omaib-adapter/*.yaml omaib-adapter/*.json
 ```
@@ -144,11 +158,13 @@ Edit the mismatched file to match the canonical value in `benchmark_contract.yam
 ### `access_tier` invalid or inconsistent with benchmark access model
 
 **Symptom:**
-```
+
+```text
 - governance_policy.yaml: 'access_tier' must be one of ['open','registered','gated','custodian-only','hybrid','federated']
 ```
 
 **Fix:** Set a valid `access_tier` in `governance_policy.yaml`, and keep it consistent with your intended access model in `benchmark_contract.yaml` (`data_access.model`).
+
 ```bash
 # In governance_policy.yaml:
 access_tier: gated
@@ -159,11 +175,13 @@ access_tier: gated
 ### Primary metric not in scorecard_schema.json
 
 **Symptom:**
-```
+
+```text
 - metrics.primary 'rmse' not found in scorecard_schema.json properties
 ```
 
 **Fix:** Either add `rmse` as a property in `scorecard_schema.json`:
+
 ```json
 "properties": {
   "rmse": {
@@ -181,12 +199,14 @@ Or change `metrics.primary` in `benchmark_contract.yaml` to match an existing `p
 ### Version mismatch across files
 
 **Symptom:**
-```
-- Cross-file consistency: version '0.2.0' in data_profile.json 
+
+```text
+- Cross-file consistency: version '0.2.0' in data_profile.json
   does not match '0.1.0' in benchmark_contract.yaml
 ```
 
 **Fix:** All four files must use the same version string. Quick check:
+
 ```bash
 grep '"version"\|^version:' omaib-adapter/*.yaml omaib-adapter/*.json
 ```
@@ -198,11 +218,13 @@ Update all non-matching files to the correct version.
 ### `splits.ratios` don't sum to 1.0
 
 **Symptom:**
-```
+
+```text
 - data_profile.json: splits.ratios values sum to 0.9500, expected 1.0000
 ```
 
 **Fix:**
+
 ```json
 "ratios": { "train": 0.70, "val": 0.15, "test": 0.15 }
 ```
@@ -214,7 +236,8 @@ Ensure the three floats sum to exactly `1.0`. Note that floating point precision
 ### `required field is null`
 
 **Symptom:**
-```
+
+```text
 - data_profile.json: 'size_estimate.samples' is null (required field)
 ```
 
@@ -242,7 +265,8 @@ Ensure the three floats sum to exactly `1.0`. Note that floating point precision
 ### Workflow fails: `omaib-validate-adapter: not found`
 
 **Symptom:**
-```
+
+```text
 Run omaib-validate-adapter omaib-adapter/ --json > validation_report.json
 /home/runner/work/_temp/...: line 1: omaib-validate-adapter: command not found
 ```
@@ -250,6 +274,7 @@ Run omaib-validate-adapter omaib-adapter/ --json > validation_report.json
 **Cause:** The `pip install` step failed silently or was cached from a bad state.
 
 **Fix:** Add `--no-cache-dir` and check the install step output:
+
 ```yaml
 - name: Install omaib-contracts
   run: pip install --no-cache-dir git+https://github.com/omaib/omaib-contracts.git
@@ -260,7 +285,8 @@ Run omaib-validate-adapter omaib-adapter/ --json > validation_report.json
 ### Workflow fails: `git clone ... network error`
 
 **Symptom:**
-```
+
+```text
 fatal: unable to connect to github.com
 ```
 
@@ -277,6 +303,7 @@ fatal: unable to connect to github.com
 **Most common cause:** Schema or template update deployed to `omaib-contracts` after your local install.
 
 **Fix:**
+
 ```bash
 pip install --upgrade git+https://github.com/omaib/omaib-contracts.git
 omaib-validate-adapter omaib-adapter/
@@ -293,6 +320,7 @@ Fix any new errors, commit, and push.
 **Symptom:** You opened the issue but no automated checks appeared after 24 hours.
 
 **Check:**
+
 - Issue title must start with `[PI Registration]` exactly (case-sensitive)
 - Confirm you opened the issue at [github.com/omaib/omaib-contracts/issues](https://github.com/omaib/omaib-contracts/issues), not your own repo
 
@@ -303,12 +331,14 @@ If both are correct and there is still no response after 48 hours, reply to the 
 ### Bot reports "CI workflow not found or failing"
 
 **Symptom:**
-```
+
+```text
 [omaib-platform-bot] ❌ Registration check failed:
   - validate-dap.yml not found in .github/workflows/
 ```
 
 **Fix:** Ensure the workflow is committed and pushed:
+
 ```bash
 git add .github/workflows/validate-dap.yml
 git commit -m "ci: add OMAIB DAP validation workflow"
@@ -322,7 +352,8 @@ Then check the Actions tab to confirm the workflow has at least one successful r
 ### Bot reports "Repository not accessible"
 
 **Symptom:**
-```
+
+```text
 [omaib-platform-bot] ❌ Registration check failed:
   - Repository not accessible at https://github.com/<your-org>/<your-repo>
 ```
@@ -340,8 +371,9 @@ If the OMAIB team explicitly asks for legacy fallback access (for org policy rea
 ### Gate 2 takes longer than 5 working days
 
 **Fix:** Reply to your registration issue with:
-```
-@omaib-team Could you check the status of the Gate 2 pilot evaluation? 
+
+```text
+@omaib-team Could you check the status of the Gate 2 pilot evaluation?
 It's been more than 5 working days since registration was confirmed.
 ```
 
@@ -350,7 +382,8 @@ It's been more than 5 working days since registration was confirmed.
 ### Gate 2 fails with "evaluation error"
 
 **Symptom:**
-```
+
+```text
 [OMAIB Platform] Gate 2 Result â€” dap-<your-slug>
 Status: FAILED
   - Evaluation error: scorecard submission failed schema validation
@@ -372,7 +405,8 @@ Status: FAILED
 ### Ingestion failed with schema version error
 
 **Symptom:**
-```
+
+```text
 [OMAIB Platform] Ingestion error â€” v0.2.0
   - benchmark_contract.yaml: unknown schema version '0.1.0' (current schema: benchmark-contract/v0.2)
 ```
@@ -398,9 +432,10 @@ If none of the above resolves your issue:
 |---|---|
 | [omaib-contracts Issues](https://github.com/omaib/omaib-contracts/issues) | Registration issues, platform bugs, schema questions |
 | [omaib-docs Discussions](https://github.com/omaib/omaib-docs/discussions) | General onboarding questions, peer support from other PIs |
-| Email: omaib-ukomain-group@sheffield.ac.uk | Sensitive data handling, institutional agreements, federated evaluation setup |
+| Email: <omaib-ukomain-group@sheffield.ac.uk> | Sensitive data handling, institutional agreements, federated evaluation setup |
 
 When filing a support issue, include:
+
 - Your `adapter_id`
 - The version of `omaib-contracts` installed (`pip show omaib-contracts`)
 - The full output of `omaib-validate-adapter omaib-adapter/`
@@ -409,4 +444,3 @@ When filing a support issue, include:
 ---
 
  [07 — Releasing Your Adapter and Managing Updates](07-RELEASE-AND-UPDATES.md) | [Back to index](index.md)
-

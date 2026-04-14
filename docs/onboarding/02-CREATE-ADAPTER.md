@@ -1,8 +1,8 @@
 # 02 — Creating Your Domain Adapter Pack
 
-> **Audience**: Principal Investigators  
-> **Time to complete**: 20–30 minutes  
-> **Previous step**: [01 — Prerequisites and Environment Setup](01-PREREQUISITES.md) complete  
+> **Audience**: Principal Investigators
+> **Time to complete**: 20–30 minutes
+> **Previous step**: [01 — Prerequisites and Environment Setup](01-PREREQUISITES.md) complete
 > **Next step**: [03 — The Four Required Files: A Field-by-Field Reference](03-FOUR-FILES.md)
 
 ---
@@ -17,7 +17,7 @@ You will scaffold the `omaib-adapter/` directory inside your repository using th
 
 Every OMAIB-registered repository has exactly one `omaib-adapter/` folder at the repository root. This folder is the contract between your dataset and the OMAIB platform. It contains no data — only structured metadata files that describe your dataset's benchmark properties, governance rules, data profile, and scoring schema.
 
-```
+```text
 your-repo/
 ├── omaib-adapter/              ← Everything OMAIB reads lives here
 │   ├── benchmark_contract.yaml   (required)
@@ -39,6 +39,7 @@ your-repo/
 Before running the CLI, choose a short, lowercase identifier for your project. This becomes part of your `adapter_id` and `benchmark_id` throughout all files.
 
 **Rules:**
+
 - Lowercase letters and hyphens only — no spaces, underscores, or capitals
 - Globally unique within OMAIB — check the [adapter registry](https://github.com/omaib/omaib-adapter-registry) if you're unsure
 - Descriptive but short — 2 to 4 words is typical
@@ -72,7 +73,7 @@ omaib-init-adapter omaib-adapter/ --slug my-acoustic-benchmark
 
 The CLI will create the `omaib-adapter/` directory and populate it with all four required files plus the two recommended files, with your slug pre-filled wherever it appears:
 
-```
+```text
 Created omaib-adapter/benchmark_contract.yaml
 Created omaib-adapter/data_profile.json
 Created omaib-adapter/governance_policy.yaml
@@ -110,6 +111,7 @@ adapter_id: dap-my-acoustic-benchmark        # already filled by CLI
 benchmark_id: omaib-my-acoustic-benchmark    # already filled by CLI
 version: 0.1.0                               # start here; increment when you update
 ```
+
 ### Project block
 
 ```yaml
@@ -125,6 +127,7 @@ project:
 ```
 
 ### License block
+
 ```yaml
 license:
   code: "MIT"
@@ -177,7 +180,6 @@ data_access:
 | `custodian-run` | Data custodian runs evaluation at their own infrastructure |
 | `hybrid` | Evaluation is split across multiple locations |
 
-
 ### Tasks block
 
 ```yaml
@@ -192,6 +194,7 @@ tasks:
 At least one task is required. Most adapters have one task; multi-task benchmarks list each separately.
 
 ### Modalities block
+
 ```yaml
 modalities:
   - text             # include only what applies
@@ -252,7 +255,9 @@ governance:
 ```
 
 ### Dependencies block
-List any platform services your adapter depends on, e.g., benchmark_registry, scorecard_service, evaluator_runner, policy_engine, etc. 
+
+List any platform services your adapter depends on, e.g., benchmark_registry, scorecard_service, evaluator_runner, policy_engine, etc.
+
 ```yaml
 dependencies:
   platform:
@@ -512,7 +517,7 @@ Do **not** push yet if you have data files — only the metadata files in `omaib
 
 For reference, here is the `dap-sonair` adapter's directory listing (a real registered adapter):
 
-```
+```text
 omaib-adapter/
 ├── benchmark_contract.yaml
 ├── data_profile.json
@@ -536,5 +541,6 @@ All four required files, no extra files, no data. The `trust_toolkit.yaml` and `
 
 ---
 
-## Next 
+## Next
+
 → [03 — The Four Required Files: A Field-by-Field Reference](03-FOUR-FILES.md)

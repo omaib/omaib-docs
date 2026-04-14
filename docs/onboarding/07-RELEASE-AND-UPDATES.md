@@ -1,8 +1,8 @@
 # 07 — Releasing Your Adapter and Managing Updates
 
-> **Audience**: Principal Investigators  
-> **Time to complete**: 15–20 minutes (first release); 5–10 minutes (subsequent updates)  
-> **Prerequisites**: Registration confirmed (see [06 — Registering Your Adapter with OMAIB](06-REGISTER.md))  
+> **Audience**: Principal Investigators
+> **Time to complete**: 15–20 minutes (first release); 5–10 minutes (subsequent updates)
+> **Prerequisites**: Registration confirmed (see [06 — Registering Your Adapter with OMAIB](06-REGISTER.md))
 > **Next step**: [08 — Troubleshooting](08-TROUBLESHOOTING.md)
 
 ---
@@ -89,6 +89,7 @@ The ingestion pipeline runs on a **fixed 6-hour cron schedule** for all register
 5. Platform updates the adapter registry and leaderboard page
 
 If server-side validation fails on a version you've already validated locally, it usually means:
+
 - A template or schema update was deployed between your local check and ingestion
 - Run `pip install --upgrade git+https://github.com/omaib/omaib-contracts.git` and re-validate
 
@@ -151,7 +152,7 @@ Major changes that affect the leaderboard (e.g., changing the primary metric) re
 
 ## Update Lifecycle Reference
 
-```
+```text
 Local edit
     │
     ▼
@@ -214,5 +215,6 @@ If you need to retire a benchmark:
 
 ---
 
-## Next 
+## Next
+
 → [08 — Troubleshooting](08-TROUBLESHOOTING.md)

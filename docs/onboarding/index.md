@@ -52,4 +52,4 @@ Total time for an experienced PI with a well-documented dataset: ~2 hours.
 
 - [omaib-contracts Issues](https://github.com/omaib/omaib-contracts/issues) — platform support
 - [omaib-docs Discussions](https://github.com/omaib/omaib-contracts/discussions) — peer questions
-- Email: omaib-ukomain-group@sheffield.ac.uk — institutional/federated queries
+- Email: <omaib-ukomain-group@sheffield.ac.uk> — institutional/federated queries

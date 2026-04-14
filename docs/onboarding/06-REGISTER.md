@@ -1,8 +1,8 @@
 # 06 — Registering Your Adapter with OMAIB
 
-> **Audience**: Principal Investigators  
-> **Time to complete**: 15–30 minutes (plus 5 working days for platform confirmation)  
-> **Prerequisites**: Gate 1 passing locally + CI validation workflow green  
+> **Audience**: Principal Investigators
+> **Time to complete**: 15–30 minutes (plus 5 working days for platform confirmation)
+> **Prerequisites**: Gate 1 passing locally + CI validation workflow green
 > **Previous step**: [05 — Setting Up Continuous Validation with GitHub Action](05-CI-SETUP.md) complete
 > **Next step**: [07 — Releasing Your Adapter and Managing Updates](07-RELEASE-AND-UPDATES.md)
 
@@ -36,11 +36,12 @@ Go to [github.com/omaib/omaib-contracts/issues/new?template=pi-registration.yml]
 
 ### Issue title format
 
-```
+```text
 [PI Registration] <Your Project Name>
 ```
 
 **Examples:**
+
 - `[PI Registration] SONAIR Acoustic Benchmark`
 - `[PI Registration] NAS Self-Driving Dataset`
 - `[PI Registration] Carbon Neutral Living Benchmark`
@@ -97,8 +98,8 @@ The bot does not have push or admin access to your repository. It cannot write c
 
 ### Verifying installation
 
-After installing, go to:  
-`https://github.com/settings/installations` (personal) or  
+After installing, go to:
+`https://github.com/settings/installations` (personal) or
 `https://github.com/organisations/<your-org>/settings/installations`
 
 You should see **omaib-platform-bot** listed with your repository.
@@ -110,7 +111,8 @@ You should see **omaib-platform-bot** listed with your repository.
 If your repository is **private**, the **omaib-platform-bot** GitHub App you installed in Step 2 already has "Contents: Read" permission and can read your adapter files at ingestion time. No additional collaborator is needed in most cases.
 
 After installing the App, reply to your registration issue with a brief confirmation:
-```
+
+```text
 Private repo — omaib-platform-bot App installed on [your-repo-url]. App has Read access.
 ```
 
@@ -146,13 +148,13 @@ You do not need to take any action for Gate 2 to start — the platform handles 
 
 Once the pilot evaluation finishes, the bot opens another issue:
 
-```
+```text
 [OMAIB Platform] Gate 2 Result — dap-<your-slug>
 
 Gate 2 pilot evaluation completed.
   Primary metric (macro_f1): 0.712
   Evaluation ran on: 2024-11-20T09:14:22Z
-  
+
 Status: PASSED — benchmark is accepting community submissions.
 
 Your leaderboard is now live at:
@@ -165,22 +167,23 @@ If Gate 2 fails (evaluation errors, schema mismatches in submitted results), the
 
 ## Registration FAQ
 
-**Q: Can I register before CI is set up?**  
+**Q: Can I register before CI is set up?**
 A: No. CI validation is a requirement for registration. Set it up first — it takes less than 10 minutes (see [05 — Setting Up Continuous Validation with GitHub Action](05-CI-SETUP.md)).
 
-**Q: Can I register a private dataset?**  
+**Q: Can I register a private dataset?**
 A: Yes. Set `data_access.model` to `gated`, `custodian-only`, or `hybrid` in `benchmark_contract.yaml`, and include `restricted` or `federated` in `evaluation_modes` as appropriate. The leaderboard page will display benchmark metadata but not the data itself.
 
-**Q: Can I have multiple adapters in one repository?**  
+**Q: Can I have multiple adapters in one repository?**
 A: No. Each adapter repository contains exactly one `omaib-adapter/` folder. If you have two independent benchmarks, use two separate repositories.
 
-**Q: How long does the review take?**  
+**Q: How long does the review take?**
 A: Typically within 5 working days. If you haven't heard within 7 days, reply to the issue to check.
 
-**Q: I need to change my benchmark_id after registration. Is that possible?**  
+**Q: I need to change my benchmark_id after registration. Is that possible?**
 A: Contact the OMAIB team on the registration issue. This is a breaking change that requires coordination.
 
 ---
 
-## Next 
+## Next
+
 → [07 — Releasing Your Adapter and Managing Updates](07-RELEASE-AND-UPDATES.md)
