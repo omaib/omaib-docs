@@ -1,6 +1,6 @@
 # Contributing to OMAIB Docs
 
-Thank you for your interest in contributing to the OMAIB documentation.
+Thank you for your interest in contributing to the OMAIB Platform Documentation.
 
 ## How to Contribute
 

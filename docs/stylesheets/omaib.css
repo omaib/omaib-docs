@@ -68,15 +68,17 @@
 }
 
 .md-tabs__link {
-  color: var(--omaib-slate-600);
+  color: var(--omaib-slate-600) !important;
   font-weight: 500;
   font-size: 0.875rem;
+  opacity: 1 !important;
 }
 
 .md-tabs__link:hover,
 .md-tabs__link--active {
-  color: var(--omaib-slate-900);
+  color: var(--omaib-slate-900) !important;
   font-weight: 600;
+  opacity: 1 !important;
 }
 
 /* ── Sidebar navigation ─────────────────────────────────────────────────── */

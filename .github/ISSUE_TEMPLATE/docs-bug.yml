@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping improve OMAIB documentation.
+        Thank you for helping improve OMAIB Platform Documentation.
         Please provide as much detail as possible so we can locate and fix the issue.
 
   - type: input
